@@ -1,0 +1,6 @@
+.photo {
+  border: 5px solid purple;
+  display: inline-block;
+  height: 320px;
+  width: 320px;
+}
