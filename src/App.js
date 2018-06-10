@@ -6,10 +6,19 @@ import PhotoGrid from './components/PhotoGrid'
 
 class App extends Component {
   render() {
+    const photos = [
+      { url: 'http://via.placeholder.com/320' },
+      { url: 'http://via.placeholder.com/320' },
+      { url: 'http://via.placeholder.com/320' },
+      { url: 'http://via.placeholder.com/320' },
+      { url: 'http://via.placeholder.com/320' },
+      { url: 'http://via.placeholder.com/320' },
+    ]
+
     return (
       <div className="app">
         <h1>Photo Gallery</h1>
-        <PhotoGrid />
+        <PhotoGrid photos={photos} />
       </div>
     );
   }
