@@ -1,6 +1,43 @@
 .photo {
+  background-size: cover;
+  background-position: center center;
   border: 5px solid purple;
   display: inline-block;
-  height: 320px;
-  width: 320px;
+  margin: 0 auto;
+  margin-bottom: 1em;
+  min-width: 100%;
+  min-height: 100vw;
+}
+
+@media screen and (min-width: 481px) {
+  .photo {
+    min-width: 45vw;
+    min-height: 45vw;
+  }
+
+  .photo:nth-child(2n) {
+    margin-left: 5vw;
+  }
+}
+
+@media screen and (min-width: 721px) {
+  .photo {
+    min-width: 30vw;
+    min-height: 30vw;
+  }
+
+  .photo:nth-child(n) {
+    margin-left: 1vw;
+  }
+}
+
+@media screen and (min-width: 961px) {
+  .photo {
+    min-width: 20vw;
+    min-height: 20vw;
+  }
+
+  .photo:nth-child(n) {
+    margin-left: 2em;
+  }
 }

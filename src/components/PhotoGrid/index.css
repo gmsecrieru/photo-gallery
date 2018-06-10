@@ -1,3 +1,17 @@
 .photo-grid {
   border: 1px solid green;
+  padding: 5vw;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 481px) {
+  .photo-grid {
+    padding: 2vw;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .photo-grid {
+    width: 95%;
+  }
 }
