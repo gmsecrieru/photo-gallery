@@ -10,4 +10,11 @@ describe('Photo', () => {
 
     expect(subject.get(0).props.style.backgroundImage === `url(${imgUrl})`).toBe(true)
   })
+
+  it('renders images asynchronously', () => {
+    // render component
+    // check props.style.backgroundImage === loading spinner
+    // simulate image loaded
+    // check props.style.backgroundImage === image URL
+  })
 })
