@@ -1,4 +1,5 @@
 import React from 'react'
+import axios from 'axios'
 
 import PhotoGrid from './../../components/PhotoGrid'
 
@@ -64,31 +65,7 @@ class PhotoStreamContainer extends React.Component {
   }
 
   fetch(page) {
-    const API_URL = `/api/photos?page=${page}`
-    const result = [
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 101 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 102 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 103 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 104 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 105 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 106 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 107 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 108 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 109 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 110 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 111 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 112 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 113 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 114 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 115 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 116 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 117 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 118 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 119 },
-      { url: `http://via.placeholder.com/320/${Math.round(Math.random() * 1000)}/${Math.round(Math.random() * 1000)}`, id: page * 120 }
-    ]
-
-    return Promise.resolve(result)
+    return axios.get(`/api/photos?page=${page}`).then(({ data }) => data)
   }
 
   onScroll() {
