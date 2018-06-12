@@ -1,9 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import { mount } from 'enzyme'
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+import App from './App';
+import PhotoStreamContainer from './containers/PhotoStreamContainer';
+
+describe('App', () => {
+  it('renders without crashing', () => {
+    const subject = mount(<App />)
+    expect(subject.find(PhotoStreamContainer).length).toBe(1)
+  })
+})
