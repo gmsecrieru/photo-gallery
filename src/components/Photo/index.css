@@ -1,12 +1,55 @@
 .photo {
   background-size: cover;
   background-position: center center;
+  cursor: pointer;
   border: 5px solid purple;
   display: inline-block;
   margin: 0 auto;
   margin-bottom: 1em;
   min-width: 100%;
   min-height: 100vw;
+  position: relative;
+}
+
+.photo .photo--details {
+  background-color: rgba(255, 255, 255, 0.3);
+  display: none;
+  height: 100%;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+}
+
+.photo:hover .photo--details {
+  display: block;
+}
+
+.photo .photo--content {
+  background-color: rgba(255, 255, 255, 0.5);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1em;
+  right: 0;
+}
+
+.photo .photo--title {
+  color: #000;
+  font-weight: bold;
+  padding-bottom: 0.5em;
+}
+
+.photo .photo--owner {
+  color: black;
+}
+
+.photo .photo--owner a {
+  text-decoration: none;
+  color: purple;
+}
+
+.photo .photo--owner a:hover {
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 481px) {

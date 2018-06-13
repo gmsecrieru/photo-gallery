@@ -2,6 +2,8 @@ import React from 'react'
 
 import './index.css'
 
+import Spinner from './../Spinner'
+
 export default class Photo extends React.Component {
   constructor(props) {
     super(props)
@@ -18,15 +20,33 @@ export default class Photo extends React.Component {
   }
 
   render() {
-    const styles = {}
     if (this.state.isImageLoaded) {
-      styles.backgroundImage = `url(${this.props.url})`
+      return this.renderPhoto()
     } else {
-      styles.backgroundColor = 'cyan'
+      return this.renderSpinner()
+    }
+  }
+
+  renderSpinner() {
+    return <div className="photo"><Spinner /></div>
+  }
+
+  renderPhoto() {
+    const styles = {
+      backgroundImage: `url(${this.props.url})`
     }
 
     return (
-      <div className="photo" style={styles}></div>
+      <div className="photo" style={styles}>
+        <div className="photo--details">
+          <div className="photo--content">
+            <div className="photo--title">{this.props.title}</div>
+            <div className="photo--owner">
+              <a href={this.props.post_url}>{this.props.user}</a>
+            </div>
+          </div>
+        </div>
+      </div>
     )
   }
 
