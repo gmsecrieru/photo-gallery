@@ -7,9 +7,11 @@ class PhotoStreamContainer extends React.Component {
   constructor(props) {
     super(props)
 
+    this.domRef = React.createRef()
+
     this.loadPhotos = this.loadPhotos.bind(this)
     this.onScroll = this.onScroll.bind(this)
-    this.domRef = React.createRef()
+    this.getRefScrollHeight = this.getRefScrollHeight.bind(this)
 
     this.state = {
       loading: true,
@@ -72,7 +74,7 @@ class PhotoStreamContainer extends React.Component {
     const { hasMore } = this.state
 
     const { pageYOffset } = window
-    const { scrollHeight } = this.domRef.current
+    const { scrollHeight } = this.getRefScrollHeight()
     const diffHeightScroll = Math.max(pageYOffset, scrollHeight) - Math.min(pageYOffset, scrollHeight)
     const pageScrollThreshold = scrollHeight * 0.4
 
@@ -82,6 +84,10 @@ class PhotoStreamContainer extends React.Component {
         this.loadPhotos()
       }, 100)
     }
+  }
+
+  getRefScrollHeight() {
+    return this.domRef.current
   }
 }
 

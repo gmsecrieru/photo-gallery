@@ -1,34 +1,60 @@
 import React from 'react'
-import { mount } from 'enzyme'
+import { shallow } from 'enzyme'
+import moxios from 'moxios'
 
+import PhotoStreamContainer from './'
+import PhotoGrid from './../../components/PhotoGrid'
 
 describe('PhotoStreamContainer', () => {
+  const MOCK_DATA = [
+    { id: 1, url: 'http://foo.bar/111' },
+    { id: 2, url: 'http://foo.bar/222' },
+    { id: 3, url: 'http://foo.bar/333' },
+    { id: 4, url: 'http://foo.bar/444' },
+    { id: 5, url: 'http://foo.bar/555' }
+  ]
+
+  beforeEach(() => {
+    jest.useFakeTimers()
+    moxios.install()
+    moxios.stubRequest(/api\/photos/, { status: 200, response: MOCK_DATA })
+  })
+
+  afterEach(() => {
+    moxios.uninstall()
+  })
+
   it('fetches photos from API', () => {
-    // mock API call
     // render component
-    // assert rendered Photo components === MOCK_DATA.length)
+    const subject = shallow(<PhotoStreamContainer />)
+    expect(subject.find(PhotoGrid).length).toBe(1)
+
+    process.nextTick(() => {
+      subject.update()
+      expect(subject.find(PhotoGrid).prop('photos')).toEqual(MOCK_DATA)
+    })
   })
 
   it('paginates results with infinite scroll', () => {
-    // mock request with 5 photos
-    // render component
-    // check if PhotoGrid was rendered with 5 Photos
-    // mock second request with 4 photos
-    // scroll to the bottom of page
-    // check if PhotoGrid was rendered with 9 Photos
+    // mock element height since JSDOM does not handle this scenario
+    jest.spyOn(PhotoStreamContainer.prototype, 'getRefScrollHeight').mockImplementation(() => ({ scrollHeight: 500 }))
 
-  })
+    // spy scrolling
+    const spyScrollCallback = jest.spyOn(PhotoStreamContainer.prototype, 'onScroll')
+    const spyLoadPhotosCallback = jest.spyOn(PhotoStreamContainer.prototype, 'loadPhotos')
 
-  it('stops to attempt fetching if nothing was returned from last request', () => {
-    // mock request with 5 photos
     // render component
-    // check if PhotoGrid was rendered with 5 Photos
-    // check if API was requested 1x
-    // mock second request with 0 photos
-    // scroll to the bottom of page
-    // check if PhotoGrid was rendered with 5 Photos
-    // check if API was requested 2x
-    // scroll to the bottom of page
-    // check if API was requested 2x
+    const subject = shallow(<PhotoStreamContainer />)
+    expect(spyScrollCallback).toHaveBeenCalledTimes(0)
+    expect(spyLoadPhotosCallback).toHaveBeenCalledTimes(1)
+
+    // simulate page scrolling
+    window.pageYOffset = 400
+    window.dispatchEvent(new Event('scroll'))
+
+    jest.runAllTimers()
+
+    expect(spyScrollCallback).toHaveBeenCalledTimes(1)
+    expect(spyLoadPhotosCallback).toHaveBeenCalledTimes(2)
   })
 })

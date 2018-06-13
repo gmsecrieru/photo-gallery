@@ -4,17 +4,20 @@ import { shallow } from 'enzyme'
 import Photo from './'
 
 describe('Photo', () => {
-  it('renders URL prop as background image', () => {
-    const imgUrl = 'http://foo.bar/baz'
-    const subject = shallow(<Photo url={imgUrl} />)
+  const IMG_URL = 'http://foo.bar/baz'
 
-    expect(subject.get(0).props.style.backgroundImage === `url(${imgUrl})`).toBe(true)
+  it('renders URL prop as background image', () => {
+    const subject = shallow(<Photo url={IMG_URL} />)
+    expect(subject.prop('style').backgroundImage).toEqual(`url(${IMG_URL})`)
   })
 
   it('renders images asynchronously', () => {
+    const spyLoadImage = jest.spyOn(Photo.prototype, 'loadImage')
+    const spySetState = jest.spyOn(Photo.prototype, 'setState')
+
     // render component
-    // check props.style.backgroundImage === loading spinner
-    // simulate image loaded
-    // check props.style.backgroundImage === image URL
+    const subject = shallow(<Photo url={IMG_URL} />)
+    expect(spyLoadImage).toHaveBeenCalledTimes(1)
+    expect(spySetState).toHaveBeenCalledWith({ isImageLoaded: true })
   })
 })
