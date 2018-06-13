@@ -21,7 +21,7 @@ const DEFAULT_TAGS = [
   'travel', 'vacation', 'flowers', 'nature', 'beach', 'landscape', 'camera', 'evening', 'railroad', 'sunset',
   'sky', 'tree', 'dog', 'sun', 'clouds', 'snow', 'cat', 'park', 'winter', 'garden', 'moon', 'Highlands',
   'Scotland', 'Ireland', 'Netherlands', 'Spain', 'Denmark', 'Sweden', 'Iceland', 'borealis', 'aurora', 'autumn',
-  'hills', 'sea', 'europe', 'Africa', 'Australia', 'China', 'Japan', 'India', 'Norway', 'horse', 'cow'
+  'hills', 'europe', 'Africa', 'Australia', 'China', 'Japan', 'India', 'Norway', 'horse', 'cow'
 ]
 
 /**
@@ -62,7 +62,8 @@ function toPhoto(flickrPhotoObject) {
     user,
     date_taken,
     published,
-    tags: tags.split(',')
+    post_url: link,
+    tags: tags.split(' ')
   }
 }
 
