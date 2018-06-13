@@ -15,3 +15,5 @@ const appPort = process.env.PORT || 8080
 app.listen(appPort)
 
 console.log(`[server] Running on port ${appPort}`)
+
+process.on('SIGINT', () => process.exit())
