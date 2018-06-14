@@ -10,7 +10,7 @@ export default class Lightbox extends React.Component {
   }
 
   render() {
-    const { children, onClick } = this.props
+    const { children } = this.props
 
     return (
       <div className="lightbox" onClick={this.handleClick}>
