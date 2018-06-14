@@ -9,6 +9,7 @@ export default class Photo extends React.Component {
     super(props)
 
     this.loadImage = this.loadImage.bind(this)
+    this.handleClick = this.handleClick.bind(this)
 
     this.state = {
       isImageLoaded: false
@@ -37,7 +38,7 @@ export default class Photo extends React.Component {
     }
 
     return (
-      <div className="photo" style={styles}>
+      <div className="photo" style={styles} onClick={this.handleClick}>
         <div className="photo--details">
           <div className="photo--content">
             <div className="photo--title">{this.props.title}</div>
@@ -54,5 +55,11 @@ export default class Photo extends React.Component {
     const img = new Image()
     img.onload = () => this.setState({ isImageLoaded: true })
     img.src = this.props.url
+  }
+
+  handleClick(e) {
+    if (typeof this.props.onClick === 'function') {
+      this.props.onClick(this)
+    }
   }
 }

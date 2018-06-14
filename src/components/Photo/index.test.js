@@ -20,4 +20,14 @@ describe('Photo', () => {
     expect(spyLoadImage).toHaveBeenCalledTimes(1)
     expect(spySetState).toHaveBeenCalledWith({ isImageLoaded: true })
   })
+
+  it('calls `onClick` prop when clicked', () => {
+    const spy = jest.fn()
+
+    const subject = shallow(<Photo url={IMG_URL} onClick={spy} />)
+    expect(spy).toHaveBeenCalledTimes(0)
+
+    subject.simulate('click')
+    expect(spy).toHaveBeenCalledTimes(1)
+  })
 })

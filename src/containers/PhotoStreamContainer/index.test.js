@@ -57,4 +57,12 @@ describe('PhotoStreamContainer', () => {
     expect(spyScrollCallback).toHaveBeenCalledTimes(1)
     expect(spyLoadPhotosCallback).toHaveBeenCalledTimes(2)
   })
+
+  it('forwards props to PhotoGrid component', () => {
+    const MOCK_PROPS = { my: 'super', fake: 'props' }
+    const subject = shallow(<PhotoStreamContainer {...MOCK_PROPS} />)
+    const photoGridProps = subject.find(PhotoGrid).props()
+
+    Object.keys(MOCK_PROPS).forEach(prop => expect(photoGridProps).toHaveProperty(prop))
+  })
 })

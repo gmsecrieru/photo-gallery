@@ -40,7 +40,7 @@ class PhotoStreamContainer extends React.Component {
 
     return (
       <div className="photo-stream-container" ref={this.domRef}>
-        <PhotoGrid photos={photos} />
+        <PhotoGrid {...this.props} photos={photos} />
         {
           hasMore
           ? <Spinner />
