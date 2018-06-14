@@ -10,3 +10,13 @@ body {
   font-size: 14px;
   font-family: sans-serif;
 }
+
+a {
+  text-decoration: none;
+  color: #94436c;
+  word-break: break-all;
+}
+
+a:hover {
+  text-decoration: underline;
+}

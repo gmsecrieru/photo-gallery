@@ -44,16 +44,6 @@
   color: black;
 }
 
-.photo .photo--owner a {
-  text-decoration: none;
-  color: #94436c;
-  word-break: break-all;
-}
-
-.photo .photo--owner a:hover {
-  text-decoration: underline;
-}
-
 @media screen and (min-width: 481px) {
   .photo {
     min-width: 45vw;
