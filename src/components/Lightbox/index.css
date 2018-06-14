@@ -1,0 +1,39 @@
+.lightbox {
+  background-color: rgba(0, 0, 0, 0.6);
+  cursor: not-allowed;
+  display: block;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.lightbox--inner {
+  margin: 0 auto;
+  padding-top: 3em;
+  width: 75%;
+}
+
+@media screen and (min-width: 501px) {
+  .lightbox--inner {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 641px) {
+  .lightbox--inner {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 961px) {
+  .lightbox--inner {
+    padding-top: 5em;
+    width: 30%;
+  }
+}
