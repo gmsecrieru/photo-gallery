@@ -19,7 +19,7 @@ const DEFAULT_QUERY_PARAMS = {
  */
 const DEFAULT_TAGS = [
   'travel', 'vacation', 'flowers', 'nature', 'beach', 'landscape', 'camera', 'evening', 'railroad', 'sunset',
-  'sky', 'tree', 'dog', 'sun', 'clouds', 'snow', 'cat', 'park', 'winter', 'garden', 'moon', 'Highlands',
+  'sky', 'tree', 'dog', 'sunrise', 'clouds', 'snow', 'cat', 'park', 'winter', 'garden', 'moon', 'Highlands',
   'Scotland', 'Ireland', 'Netherlands', 'Spain', 'Denmark', 'Sweden', 'Iceland', 'borealis', 'aurora', 'autumn',
   'hills', 'europe', 'Africa', 'Australia', 'China', 'Japan', 'India', 'Norway', 'horse', 'cow'
 ]
