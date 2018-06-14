@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 
 import PhotoGrid from './../../components/PhotoGrid'
+import Spinner from './../../components/Spinner'
 
 class PhotoStreamContainer extends React.Component {
   constructor(props) {
@@ -35,14 +36,14 @@ class PhotoStreamContainer extends React.Component {
   }
 
   render() {
-    const { loading, photos } = this.state
+    const { hasMore, photos } = this.state
 
     return (
       <div className="photo-stream-container" ref={this.domRef}>
         <PhotoGrid photos={photos} />
         {
-          loading
-          ? "Loading..."
+          hasMore
+          ? <Spinner />
           : null
         }
       </div>
@@ -59,7 +60,6 @@ class PhotoStreamContainer extends React.Component {
 
       this.setState({
         hasMore,
-        loading: false,
         page: page + 1,
         photos: photos.concat(result)
       })
@@ -76,7 +76,7 @@ class PhotoStreamContainer extends React.Component {
     const { pageYOffset } = window
     const { scrollHeight } = this.getRefScrollHeight()
     const diffHeightScroll = Math.max(pageYOffset, scrollHeight) - Math.min(pageYOffset, scrollHeight)
-    const pageScrollThreshold = scrollHeight * 0.4
+    const pageScrollThreshold = scrollHeight * 0.3
 
     clearTimeout(this.timeoutId)
     if (hasMore && diffHeightScroll < pageScrollThreshold) {

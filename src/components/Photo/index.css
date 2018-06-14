@@ -2,7 +2,7 @@
   background-size: cover;
   background-position: center center;
   cursor: pointer;
-  border: 5px solid purple;
+  border: 5px solid #fff5f4;
   display: inline-block;
   margin: 0 auto;
   margin-bottom: 1em;
@@ -12,7 +12,7 @@
 }
 
 .photo .photo--details {
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 245, 244, 0.3);
   display: none;
   height: 100%;
   position: absolute;
@@ -25,7 +25,7 @@
 }
 
 .photo .photo--content {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 245, 244, 0.5);
   position: absolute;
   bottom: 0;
   left: 0;
@@ -46,7 +46,7 @@
 
 .photo .photo--owner a {
   text-decoration: none;
-  color: purple;
+  color: #94436c;
   word-break: break-all;
 }
 
